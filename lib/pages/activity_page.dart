@@ -68,7 +68,7 @@ class _ActivityPageState extends State<ActivityPage> {
     return SideTitles(
       showTitles: true,
       reservedSize: 15,
-      interval: 20000, // Show label for each minute
+      interval: 60000, // Show label for each minute
       getTitlesWidget: (value, meta) {
         DateTime date = DateTime.fromMillisecondsSinceEpoch(value.toInt());
         String formattedTime = "${date.hour}:${date.minute}:${date.second}";
