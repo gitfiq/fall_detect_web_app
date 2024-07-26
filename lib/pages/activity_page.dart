@@ -77,6 +77,19 @@ class _ActivityPageState extends State<ActivityPage> {
     );
   }
 
+  SideTitles getLeftTitles() {
+    return SideTitles(
+      showTitles: true,
+      reservedSize: 40,
+      getTitlesWidget: (value, meta) {
+        return Text(
+          value.toStringAsFixed(2), // Format the value to 2 decimal places
+          style: const TextStyle(fontSize: 10),
+        );
+      },
+    );
+  }
+
   Widget _buildLineChartOrMessage() {
     // ignore: prefer_is_empty
     if (sensorDataPoints.length < 2) {
@@ -125,6 +138,7 @@ class _ActivityPageState extends State<ActivityPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: LineChart(
                       LineChartData(
+                        minY: 0.0,
                         lineBarsData: [
                           LineChartBarData(
                               spots: accelerometerChartData,
@@ -142,15 +156,12 @@ class _ActivityPageState extends State<ActivityPage> {
                             ),
                             rightTitles: const AxisTitles(
                                 sideTitles: SideTitles(showTitles: false)),
-                            leftTitles: const AxisTitles(
-                              axisNameWidget: Text(
+                            leftTitles: AxisTitles(
+                              axisNameWidget: const Text(
                                 " Overall Acceleration (m/s^2)",
                                 style: TextStyle(fontSize: 12),
                               ),
-                              sideTitles: SideTitles(
-                                showTitles: true,
-                                reservedSize: 40,
-                              ),
+                              sideTitles: getLeftTitles(),
                             ),
                             bottomTitles: AxisTitles(
                               axisNameWidget: const Text("Time"),
