@@ -1,6 +1,6 @@
 # fall_detect_web_app
 
-A new Flutter project.
+A Web Flutter project that is used to monitor the wearer's status and fall history. 
 
 ## Getting Started
 
